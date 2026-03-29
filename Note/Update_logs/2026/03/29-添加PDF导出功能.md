@@ -19,9 +19,13 @@
 - `_html_to_pdf` 方法：使用 weasyprint 库将 HTML 转换为 PDF
 
 ### 依赖更新
-- 在 `setup.py` 中添加可选依赖 `extras_require`
+- 在 `setup.py` 中将 weasyprint 设为必需依赖
 - PDF 功能需要安装 `weasyprint>=60.0`
-- 安装方式：`pip install markconv[pdf]`
+- 安装 markconv 时自动安装 weasyprint
+
+### 代码优化
+- 移除 `_html_to_pdf` 方法中的 try-except 处理
+- weasyprint 是必需依赖，无需检查安装状态
 
 ---
 
@@ -50,3 +54,5 @@ pdf_exporter.export(parsed_data, 'output.pdf')
 - Commit ID: 2dfd831 - 添加 PDF 导出器框架
 - Commit ID: f299a9b - 实现 PDF 导出器基础功能
 - Commit ID: b4652cb - 实现 HTML 转 PDF 功能
+- Commit ID: 5ea749c - 将 weasyprint 设为必需依赖
+- Commit ID: f9112ed - 移除 PDF 导出器的 try-except 处理
