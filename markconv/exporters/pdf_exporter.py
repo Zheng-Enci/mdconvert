@@ -17,19 +17,40 @@ def _register_chinese_fonts():
     """
     from reportlab.pdfbase import pdfmetrics
     from reportlab.pdfbase.ttfonts import TTFont
+    from reportlab.pdfbase.pdfmetrics import registerFontFamily
     
     windows_fonts = [
-        ('Microsoft YaHei', 'C:/Windows/Fonts/msyh.ttc'),
-        ('SimHei', 'C:/Windows/Fonts/simhei.ttf'),
-        ('SimSun', 'C:/Windows/Fonts/simsun.ttc'),
+        ('Microsoft YaHei', 'C:/Windows/Fonts/msyh.ttc', 0),
+        ('Microsoft YaHei Bold', 'C:/Windows/Fonts/msyhbd.ttc', 0),
+        ('SimHei', 'C:/Windows/Fonts/simhei.ttf', 0),
+        ('SimSun', 'C:/Windows/Fonts/simsun.ttc', 0),
     ]
     
-    for font_name, font_path in windows_fonts:
+    for font_name, font_path, subfont_index in windows_fonts:
         if os.path.exists(font_path):
             try:
-                pdfmetrics.registerFont(TTFont(font_name, font_path))
+                pdfmetrics.registerFont(TTFont(font_name, font_path, subfontIndex=subfont_index))
             except:
                 pass
+    
+    registerFontFamily('Microsoft YaHei', normal='Microsoft YaHei', bold='Microsoft YaHei Bold')
+
+
+def _link_callback(uri, rel):
+    """
+    链接回调函数，用于处理相对路径
+    
+    Args:
+        uri: URI 路径
+        rel: 相对路径
+        
+    Returns:
+        处理后的路径
+    """
+    if uri.startswith('http://') or uri.startswith('https://'):
+        return uri
+    
+    return os.path.join(os.path.dirname(__file__), uri)
 
 
 def _markdown_to_html(markdown_content: str) -> str:
@@ -141,8 +162,20 @@ class PDFExporter:
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>{title}</title>
             <style>
+                @font-face {{
+                    font-family: 'Microsoft YaHei';
+                    src: url('C:/Windows/Fonts/msyh.ttc');
+                }}
+                @font-face {{
+                    font-family: 'SimHei';
+                    src: url('C:/Windows/Fonts/simhei.ttf');
+                }}
+                @font-face {{
+                    font-family: 'SimSun';
+                    src: url('C:/Windows/Fonts/simsun.ttc');
+                }}
                 body {{
-                    font-family: 'Microsoft YaHei', 'SimHei', Arial, sans-serif;
+                    font-family: 'Microsoft YaHei', 'SimHei', 'SimSun', Arial, sans-serif;
                     line-height: 1.6;
                     margin: 20px;
                     color: #333;
@@ -250,4 +283,4 @@ class PDFExporter:
             from xhtml2pdf import pisa
             _register_chinese_fonts()
             with open(output_path, 'wb') as pdf_file:
-                pisa.CreatePDF(html_content, dest=pdf_file)
+                pisa.CreatePDF(html_content, dest=pdf_file, encoding='UTF-8', link_callback=_link_callback)

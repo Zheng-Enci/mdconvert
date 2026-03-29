@@ -79,3 +79,6 @@ python pdf_example.py
 - 添加 `_register_chinese_fonts()` 函数注册中文字体
 - 支持 Windows 系统字体：微软雅黑、黑体、宋体
 - 在使用 xhtml2pdf 生成 PDF 前自动注册中文字体
+- 添加 `encoding='UTF-8'` 参数到 pisa.CreatePDF
+- 添加 `_link_callback()` 函数处理相对路径
+- 在 HTML CSS 中添加 `@font-face` 规则直接引用字体文件
