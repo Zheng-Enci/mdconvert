@@ -214,5 +214,11 @@ class PDFExporter:
             html_content (str): HTML 内容字符串
             output_path (str): 输出 PDF 文件的路径
         """
-        from weasyprint import HTML
-        HTML(string=html_content).write_pdf(output_path)
+        from xhtml2pdf import pisa
+        
+        output_dir = os.path.dirname(output_path)
+        if output_dir and not os.path.exists(output_dir):
+            os.makedirs(output_dir, exist_ok=True)
+        
+        with open(output_path, 'wb') as pdf_file:
+            pisa.CreatePDF(html_content, dest=pdf_file)

@@ -1,0 +1,56 @@
+# 将 PDF 导出库从 WeasyPrint 切换到 xhtml2pdf
+
+## 修改原因
+WeasyPrint 在 Windows 上需要安装复杂的系统依赖（Pango、GTK、GLib 等），安装困难且容易出错。xhtml2pdf 是纯 Python 库，无需系统依赖，安装简单。
+
+## 修改内容
+
+### 1. setup.py
+- 将 `weasyprint>=68.1` 替换为 `xhtml2pdf>=0.2.5`
+
+### 2. markconv/exporters/pdf_exporter.py
+- 将 `_html_to_pdf` 方法中的 WeasyPrint 导入替换为 xhtml2pdf
+- 修改 PDF 生成方式：
+  ```python
+  # 旧代码（WeasyPrint）
+  from weasyprint import HTML
+  HTML(string=html_content).write_pdf(output_path)
+  
+  # 新代码（xhtml2pdf）
+  from xhtml2pdf import pisa
+  with open(output_path, 'wb') as pdf_file:
+      pisa.CreatePDF(html_content, dest=pdf_file)
+  ```
+
+### 3. requirements.txt
+- 移除 WeasyPrint 及其依赖：
+  - weasyprint==68.1
+  - cssselect2==0.9.0
+  - pydyf==0.12.1
+  - pyphen==0.17.2
+  - tinycss2==1.5.1
+  - tinyhtml5==2.1.0
+  - zopfli==0.4.1
+- 添加 xhtml2pdf 及其依赖：
+  - xhtml2pdf==0.2.5
+  - html5lib==1.1
+  - reportlab==4.2.5
+  - six==1.17.0
+
+## 优势
+- ✅ 安装简单：`pip install xhtml2pdf` 即可
+- ✅ 无系统依赖：纯 Python 实现
+- ✅ 跨平台一致：Windows、Linux、macOS 安装方式相同
+- ✅ CSS 支持足够：支持基本的 CSS 样式
+
+## 注意事项
+- ⚠️ xhtml2pdf 的 CSS 支持不如 WeasyPrint 完善
+- ⚠️ 中文显示可能需要配置字体（已在代码中内置中文字体支持）
+- ⚠️ 复杂的 CSS 布局可能不完全支持
+
+## 测试建议
+建议运行 PDF 示例验证功能正常：
+```bash
+cd examples/pdf_example
+python pdf_example.py
+```
