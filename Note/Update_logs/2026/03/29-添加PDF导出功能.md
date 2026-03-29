@@ -33,10 +33,14 @@
 
 ### 新增文件
 - `markconv/exporters/pdf_exporter.py` - PDF 导出器实现
+- `examples/pdf_example/pdf_example.py` - PDF 转换示例
+- `examples/pdf_example/sample.md` - 示例 Markdown 文件
+- `examples/pdf_example/custom.css` - 自定义 CSS 样式
 
 ### 修改文件
 - `markconv/exporters/__init__.py` - 导出 PDFExporter
-- `setup.py` - 添加 PDF 可选依赖
+- `setup.py` - 添加 PDF 必需依赖
+- `README.md` - 更新版本号和文档说明
 
 ### 使用方式
 ```python
