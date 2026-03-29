@@ -210,7 +210,7 @@ class PDFExporter:
         """
         将 HTML 内容转换为 PDF 文件
         
-        使用 WeasyPrint 进行转换
+        使用 pdfkit 进行转换
         
         Args:
             html_content (str): HTML 内容字符串
@@ -220,5 +220,5 @@ class PDFExporter:
         if output_dir and not os.path.exists(output_dir):
             os.makedirs(output_dir, exist_ok=True)
         
-        from weasyprint import HTML
-        HTML(string=html_content).write_pdf(output_path)
+        import pdfkit
+        pdfkit.from_string(html_content, output_path, encoding='UTF-8')

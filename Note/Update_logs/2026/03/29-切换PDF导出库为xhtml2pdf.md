@@ -155,3 +155,11 @@ python pdf_example.py
 ### 2026-03-29 (第十五次更新)
 - 发现 WeasyPrint 缺少 fonttools 依赖
 - 添加 fonttools==4.55.3 到 requirements.txt
+
+### 2026-03-29 (第十六次更新)
+- WeasyPrint 在 Windows 上需要安装复杂的系统依赖（Pango、GLib 等）
+- 用户已安装 wkhtmltopdf，决定切换到 pdfkit
+- pdfkit 基于 wkhtmltopdf，无需系统依赖，安装简单
+- 修改 pdf_exporter.py 使用 pdfkit.from_string()
+- 更新 requirements.txt，只保留 markdown2 和 pdfkit
+- 更新 setup.py，将 weasyprint 替换为 pdfkit
