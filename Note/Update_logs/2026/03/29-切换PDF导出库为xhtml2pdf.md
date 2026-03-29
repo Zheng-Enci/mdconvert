@@ -54,3 +54,16 @@ WeasyPrint 在 Windows 上需要安装复杂的系统依赖（Pango、GTK、GLib
 cd examples/pdf_example
 python pdf_example.py
 ```
+
+## 更新记录
+### 2026-03-29
+- 清理 requirements.txt，移除 WeasyPrint 及其依赖
+- 保留 xhtml2pdf==0.2.17 作为 PDF 导出库
+- 移除的依赖：
+  - weasyprint==68.1
+  - cssselect2==0.9.0
+  - pydyf==0.12.1
+  - pyphen==0.17.2
+  - tinycss2==1.5.1
+  - tinyhtml5==2.1.0
+  - zopfli==0.4.1
