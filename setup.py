@@ -75,13 +75,9 @@ setup(
     install_requires=[
         # 需要 markdown2 库，版本 >= 2.5.5
         'markdown2>=2.5.5',
+        # 需要 weasyprint 库，版本 >= 60.0（用于 PDF 导出）
+        'weasyprint>=60.0',
     ],
-    
-    # ===== 可选依赖（按需安装）=====
-    extras_require={
-        # PDF 导出功能支持
-        'pdf': ['weasyprint>=60.0'],
-    },
     
     # ===== 搜索关键词（帮助用户搜索包）=====
     
