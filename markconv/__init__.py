@@ -1,5 +1,5 @@
 """
-mdtool - Markdown 转换工具库
+markconv - Markdown 转换工具库
 
 一个强大的 Python 库，用于将 Markdown 文件转换为 HTML 格式。
 
@@ -10,12 +10,12 @@ mdtool - Markdown 转换工具库
 - 中文友好
 
 Example:
-    >>> from mdtool import MDConverter
+    >>> from markconv import MDConverter
     >>> converter = MDConverter()
     >>> converter.to_html('input.md', 'output.html')
 """
 
-from .html_converter import MDConverter
+from .converter import MDConverter
 
 __version__ = '0.1.0'
 __all__ = ['MDConverter']

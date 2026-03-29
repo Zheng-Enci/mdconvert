@@ -97,7 +97,7 @@ python installl_requirements.py
 markconv/
 ├── markconv/                         # 主包目录
 │   ├── __init__.py                 # 包初始化文件 (v0.1.0)
-│   ├── html_converter.py           # HTML转换器核心模块
+│   ├── converter.py                # HTML转换器核心模块
 │   ├── parsers/                    # 解析器模块
 │   │   ├── __init__.py
 │   │   └── markdown_parser.py      # Markdown解析器
