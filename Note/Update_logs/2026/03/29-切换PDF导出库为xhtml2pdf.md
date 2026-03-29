@@ -6,7 +6,7 @@ WeasyPrint 在 Windows 上需要安装复杂的系统依赖（Pango、GTK、GLib
 ## 修改内容
 
 ### 1. setup.py
-- 将 `weasyprint>=68.1` 替换为 `xhtml2pdf>=0.2.5`
+- 将 `weasyprint>=68.1` 替换为 `xhtml2pdf>=0.2.17`
 
 ### 2. markconv/exporters/pdf_exporter.py
 - 将 `_html_to_pdf` 方法中的 WeasyPrint 导入替换为 xhtml2pdf
