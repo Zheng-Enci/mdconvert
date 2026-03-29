@@ -86,3 +86,9 @@ python pdf_example.py
 - 移除 HTML CSS 中的 `@font-face` 规则
 - xhtml2pdf 不支持 CSS `@font-face` 引用本地字体文件
 - 仅通过 ReportLab 的 `pdfmetrics.registerFont()` 注册字体
+
+### 2026-03-29 (第五次更新)
+- 创建 `fonts/` 目录并复制 Windows 系统中文字体文件
+- 修改 `_link_callback()` 函数支持 `fonts/` 相对路径
+- 在 HTML CSS 中重新添加 `@font-face` 规则，使用相对路径引用字体文件
+- 字体文件包括：msyh.ttc、msyhbd.ttc、simhei.ttf、simsun.ttc

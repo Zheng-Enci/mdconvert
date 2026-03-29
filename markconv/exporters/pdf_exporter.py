@@ -50,6 +50,9 @@ def _link_callback(uri, rel):
     if uri.startswith('http://') or uri.startswith('https://'):
         return uri
     
+    if uri.startswith('fonts/'):
+        return os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), uri)
+    
     return os.path.join(os.path.dirname(__file__), uri)
 
 
@@ -162,6 +165,22 @@ class PDFExporter:
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>{title}</title>
             <style>
+                @font-face {{
+                    font-family: 'Microsoft YaHei';
+                    src: url('fonts/msyh.ttc');
+                }}
+                @font-face {{
+                    font-family: 'Microsoft YaHei Bold';
+                    src: url('fonts/msyhbd.ttc');
+                }}
+                @font-face {{
+                    font-family: 'SimHei';
+                    src: url('fonts/simhei.ttf');
+                }}
+                @font-face {{
+                    font-family: 'SimSun';
+                    src: url('fonts/simsun.ttc');
+                }}
                 body {{
                     font-family: 'Microsoft YaHei', 'SimHei', 'SimSun', Arial, sans-serif;
                     line-height: 1.6;
