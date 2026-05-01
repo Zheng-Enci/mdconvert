@@ -6,6 +6,7 @@ PDF 导出器模块
 
 import os
 import re
+import shutil
 from typing import Dict, Any
 import markdown2
 
@@ -109,6 +110,7 @@ class PDFExporter:
         2. 将处理后的 Markdown 内容转换为 HTML
         3. 将 HTML 包装在完整的 HTML 文档结构中
         4. 将 HTML 转换为 PDF
+        5. 删除临时生成的 mermaid_images 图片文件夹
         
         Args:
             parsed_data (Dict[str, Any]): 包含 Markdown 解析结果的字典
@@ -121,6 +123,9 @@ class PDFExporter:
         if not os.path.exists(output_dir):
             os.makedirs(output_dir, exist_ok=True)
         
+        # 定义 mermaid 图片临时文件夹路径
+        mermaid_images_dir = os.path.join(output_dir, 'mermaid_images')
+        
         # 先将 Mermaid 代码块渲染为图片
         md_content = _replace_mermaid_with_images(parsed_data['content'], output_dir)
         
@@ -130,6 +135,10 @@ class PDFExporter:
         
         # 生成 PDF
         self._html_to_pdf(html_content, output_path)
+        
+        # 删除临时生成的 mermaid_images 图片文件夹
+        if os.path.exists(mermaid_images_dir):
+            shutil.rmtree(mermaid_images_dir)
 
     def _wrap_html(self, body_content: str, title: str) -> str:
         """
