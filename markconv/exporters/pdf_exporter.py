@@ -266,6 +266,8 @@ class PDFExporter:
         </head>
         <body>
             {body_content}
+            <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+            <script>mermaid.initialize({{startOnLoad: true}});</script>
         </body>
         </html>
         """
@@ -288,7 +290,7 @@ class PDFExporter:
         """
         将 HTML 内容转换为 PDF 文件
         
-        使用 pdfkit 进行转换
+        使用 pdfkit 进行转换，支持 JavaScript 渲染（如 Mermaid 图表）
         
         Args:
             html_content (str): HTML 内容字符串
@@ -300,4 +302,10 @@ class PDFExporter:
         
         import pdfkit
         config = pdfkit.configuration(wkhtmltopdf='C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe')
-        pdfkit.from_string(html_content, output_path, configuration=config)
+        options = {
+            'javascript-delay': '5000',
+            'enable-javascript': None,
+            'no-stop-slow-scripts': None,
+            'allow': None
+        }
+        pdfkit.from_string(html_content, output_path, configuration=config, options=options)
