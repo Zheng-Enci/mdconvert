@@ -148,6 +148,84 @@ class PDFExporter:
                     background-color: transparent;
                     padding: 0;
                 }}
+                .codehilite {{
+                    background-color: #f4f4f4;
+                    padding: 15px;
+                    border-radius: 5px;
+                    overflow-x: auto;
+                    margin: 15px 0;
+                    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+                }}
+                .codehilite pre {{
+                    background-color: transparent;
+                    padding: 0;
+                    margin: 0;
+                    white-space: pre;
+                }}
+                .codehilite code {{
+                    color: #333;
+                }}
+                .codehilite .k {{ color: #900; font-weight: bold; }}
+                .codehilite .nf {{ color: #069; font-weight: bold; }}
+                .codehilite .nb {{ color: #008080; }}
+                .codehilite .s2 {{ color: #d14; }}
+                .codehilite .kc {{ color: #008080; font-weight: bold; }}
+                .codehilite .p {{ color: #333; }}
+                .codehilite .w {{ color: #333; }}
+                .codehilite .c {{ color: #60a0b0; font-style: italic; }}
+                .codehilite .err {{ border: 1px solid #FF0000; }}
+                .codehilite .o {{ color: #666; }}
+                .codehilite .cm {{ color: #60a0b0; font-style: italic; }}
+                .codehilite .cp {{ color: #009999; }}
+                .codehilite .c1 {{ color: #60a0b0; font-style: italic; }}
+                .codehilite .cs {{ color: #60a0b0; font-style: italic; }}
+                .codehilite .gd {{ color: #A00000; }}
+                .codehilite .ge {{ font-style: italic; }}
+                .codehilite .gr {{ color: #FF0000; }}
+                .codehilite .gh {{ color: #000080; font-weight: bold; }}
+                .codehilite .gi {{ color: #00A000; }}
+                .codehilite .go {{ color: #808080; }}
+                .codehilite .gp {{ color: #c65d09; font-weight: bold; }}
+                .codehilite .gs {{ font-weight: bold; }}
+                .codehilite .gu {{ color: #800080; font-weight: bold; }}
+                .codehilite .gt {{ color: #0040D0; }}
+                .codehilite .kt {{ color: #900; font-weight: bold; }}
+                .codehilite .m {{ color: #099; }}
+                .codehilite .s {{ color: #d14; }}
+                .codehilite .na {{ color: #008080; }}
+                .codehilite .nb {{ color: #008080; }}
+                .codehilite .nc {{ color: #458; font-weight: bold; }}
+                .codehilite .no {{ color: #008080; }}
+                .codehilite .nd {{ color: #3c5d5d; font-weight: bold; }}
+                .codehilite .ni {{ color: #800080; }}
+                .codehilite .ne {{ color: #900; font-weight: bold; }}
+                .codehilite .nf {{ color: #069; font-weight: bold; }}
+                .codehilite .nl {{ color: #900; font-weight: bold; }}
+                .codehilite .nn {{ color: #555; }}
+                .codehilite .nt {{ color: #000080; }}
+                .codehilite .nv {{ color: #008080; }}
+                .codehilite .ow {{ color: #000; font-weight: bold; }}
+                .codehilite .w {{ color: #bbb; }}
+                .codehilite .mf {{ color: #099; }}
+                .codehilite .mh {{ color: #099; }}
+                .codehilite .mi {{ color: #099; }}
+                .codehilite .mo {{ color: #099; }}
+                .codehilite .sb {{ color: #d14; }}
+                .codehilite .sc {{ color: #d14; }}
+                .codehilite .sd {{ color: #d14; }}
+                .codehilite .s2 {{ color: #d14; }}
+                .codehilite .se {{ color: #d14; }}
+                .codehilite .sh {{ color: #d14; }}
+                .codehilite .si {{ color: #d14; }}
+                .codehilite .sx {{ color: #d14; }}
+                .codehilite .sr {{ color: #009926; }}
+                .codehilite .s1 {{ color: #d14; }}
+                .codehilite .ss {{ color: #990073; }}
+                .codehilite .bp {{ color: #999; }}
+                .codehilite .vc {{ color: #008080; }}
+                .codehilite .vg {{ color: #008080; }}
+                .codehilite .vi {{ color: #008080; }}
+                .codehilite .il {{ color: #099; }}
                 blockquote {{
                     border-left: 4px solid #ddd;
                     margin: 0;
