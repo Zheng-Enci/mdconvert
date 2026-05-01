@@ -43,7 +43,8 @@ def _replace_mermaid_with_images(md_content: str, output_dir: str) -> str:
         image_path = processor.render_to_image(mermaid_code)
         # 使用绝对路径确保 PDF 生成时能找到图片，将反斜杠转为正斜杠
         abs_image_path = os.path.abspath(image_path).replace('\\', '/')
-        image_markdown = f'\n![Mermaid 图表 {i+1}]({abs_image_path})\n'
+        # 使用 HTML div 包裹图片，实现水平居中
+        image_markdown = f'\n<div style="text-align: center;">\n\n![Mermaid 图表 {i+1}]({abs_image_path})\n\n</div>\n'
         # 使用字符串替换而不是正则替换，避免反斜杠问题
         result = result.replace(full_match, image_markdown, 1)
     
