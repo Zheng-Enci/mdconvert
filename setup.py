@@ -77,6 +77,8 @@ setup(
         'markdown2>=2.5.5',
         # 需要 pdfkit 库（用于 PDF 导出）
         'pdfkit>=1.0.0',
+        # 需要 mermaid-cli 库（用于渲染 mermaid 图表）
+        'mermaid-cli>=0.1.3',
     ],
     
     # ===== 搜索关键词（帮助用户搜索包）=====
